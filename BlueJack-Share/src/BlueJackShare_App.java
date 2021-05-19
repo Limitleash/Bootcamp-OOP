@@ -9,6 +9,18 @@ public class BlueJackShare_App {
         Controller control = new Controller();
         int choice;
         ArrayList<Participant> list = new ArrayList<>();
+        Participant new_participant = new Participant();
+        new_participant.setName("VJ");
+        new_participant.setShare(50);
+        list.add(new_participant);
+        Participant new_participant2 = new Participant();
+        new_participant2.setName("Steven");
+        new_participant2.setShare(30);
+        list.add(new_participant2);
+        Participant new_participant3 = new Participant();
+        new_participant3.setName("Za ki");
+        new_participant3.setShare(100);
+        list.add(new_participant3);
         for(;;){
             System.out.println("BJ-SHARE");
             System.out.println("+=========================+");
@@ -41,7 +53,8 @@ public class BlueJackShare_App {
                 control.delete(list);
             }
             else if(choice == 4){
-                System.out.print("Thank you");
+                control.exit(list);
+                System.out.println("Program Terminated!");
                 break;
             }
         }

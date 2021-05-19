@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Controller {
+public class Controller{
 	Scanner scan = new Scanner(System.in);
     String temp_string = new String();
     int temp_int;
@@ -135,5 +136,23 @@ public class Controller {
 			
 			list.remove(temp_int-1);
     	}
+    }
+
+    
+    public void exit(ArrayList<Participant> list) {
+    	Collections.sort(list, new NameComparator<Participant>());
+    	ArrayList<Participant> shuffled_list = new ArrayList<>();
+    	int len = list.size();
+    	shuffled_list = list;
+    	Collections.shuffle(shuffled_list);
+    	System.out.println("+==================================================+");
+		System.out.println("+ Share List                                       +");
+		System.out.println("+==================================================+");
+		System.out.println("+ Username                       | Before | After  +");
+		System.out.println("+==================================================+");
+		for(int i = 0, j = len-1; i<len; i++, j--) {
+		 System.out.printf("| %-30s | %-6d | %-6d |\n", list.get(i).getName(), list.get(i).getShare(), shuffled_list.get(j).getShare());
+		}
+		System.out.println("+==================================================+");
     }
 }
